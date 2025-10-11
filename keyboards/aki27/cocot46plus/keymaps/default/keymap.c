@@ -1,7 +1,11 @@
 /*
 Copyright 2022 aki27
-
+Modified by RitHase in 2025
 This program is free software: you can redistribute it and/or modify
+
+This file is based on original work by aki27, published under the GNU General Public License.
+It has been modified by RitHase  in 2025 and is redistributed under the same GNU GPL license.
+For details, see the license files included in this repository.
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 2 of the License, or
 (at your option) any later version.
