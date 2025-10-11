@@ -145,6 +145,38 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 };
 #endif
 
+#ifdef ENCODER_ENABLE
+bool encoder_update_user(uint8_t index, bool clockwise) {
+    if (index == 0) {
+        switch (get_highest_layer(layer_state)) {
+            case 0:  // 通常レイヤー: スクロール
+                if (clockwise) {
+                    tap_code(KC_MS_WH_UP);
+                } else {
+                    tap_code(KC_MS_WH_DOWN);
+                }
+                break;
+                
+            case 1:  // レイヤー1: 音量
+                if (clockwise) {
+                    tap_code(KC_VOLD);
+                } else {
+                    tap_code(KC_VOLU);
+                }
+                break;
+                
+            case 2:  // レイヤー2: 横スクロール
+                if (clockwise) {
+                    tap_code(KC_MS_WH_LEFT);
+                } else {
+                    tap_code(KC_MS_WH_RIGHT);
+                }
+                break;
+        }
+    }
+    return false;
+}
+#endif
 
 
 layer_state_t layer_state_set_user(layer_state_t state) {
@@ -158,19 +190,15 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         cocot_set_scroll_mode(true);
         break;
     case _TRACKBALL:
-        rgblight_sethsv_range(HSV_GREEN, 0, 2);
         cocot_set_scroll_mode(false);
         break;
     case _Layer4:
-        rgblight_sethsv_range(HSV_YELLOW, 0, 2);
         cocot_set_scroll_mode(false);
         break;
     case _Layer5:
-        rgblight_sethsv_range(HSV_CYAN, 0, 2);
         cocot_set_scroll_mode(false);
         break;
     case _Layer6:
-        rgblight_sethsv_range(HSV_ORANGE, 0, 2);
         cocot_set_scroll_mode(false);
         break;
     default:
@@ -178,7 +206,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         cocot_set_scroll_mode(false);
         break;
     }
-    rgblight_set_effect_range( 2, 10);
+    // rgblight_set_effect_range( 2, 10);
       return state;
 };
 

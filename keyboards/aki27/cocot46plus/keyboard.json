@@ -53,10 +53,10 @@
         "led_count": 12,
         "animations": {
             "breathing": false,
-            "rainbow_mood": true,
-            "rainbow_swirl": true,
+            "rainbow_mood": false,
+            "rainbow_swirl": false,
             "snake": false,
-            "static_gradient": true,
+            "static_gradient": false,
             "twinkle": false
         },
         "hue_steps": 10,
